@@ -2,7 +2,7 @@
 
 Developed for the [freeCodeCamp](https://www.freecodecamp.com/) Back End Developmennt Project: Build a Voting App
 
-### User Stories
+## User Stories
 1. As an authenticated user, I can keep my polls and come back later to access them.
 2. As an authenticated user, I can share my polls with my friends.
 3. As an authenticated user, I can see the aggregate results of my polls.
@@ -13,14 +13,8 @@ Developed for the [freeCodeCamp](https://www.freecodecamp.com/) Back End Develop
 8. As an unauthenticated or authenticated user, I can see the results of polls in chart form.
 
 ## Technology stack
-* HTML
-* CSS / Bootstrap
-* Javascript / jQuery
-* Handlebars.js
-* MongoDB
-* Mongoose
-* Express
-* Node.js
+
+HTML, CSS, JavaScript, Bootstrap, jQuery, Handlebars.js, Node.js, Express.js, MongoDB, Mongoose
 
 ### Live Site
 https://harryteo-votingapp.herokuapp.com/
