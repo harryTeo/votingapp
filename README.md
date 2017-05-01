@@ -12,5 +12,15 @@ Developed for the [freeCodeCamp](https://www.freecodecamp.com/) Back End Develop
 7. As an unauthenticated or authenticated user, I can see and vote on everyone's polls.
 8. As an unauthenticated or authenticated user, I can see the results of polls in chart form.
 
+## Technology stack
+* HTML
+* CSS / Bootstrap
+* Javascript / jQuery
+* Handlebars.js
+* MongoDB
+* Mongoose
+* Express
+* Node.js
+
 ### Live Site
 https://harryteo-votingapp.herokuapp.com/
