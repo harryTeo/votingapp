@@ -14,7 +14,7 @@ Developed for the [freeCodeCamp](https://www.freecodecamp.com/) Back End Develop
 
 ## Technology Stack
 
-HTML, CSS, JavaScript, Bootstrap, jQuery, Handlebars.js, Node.js, Express.js, MongoDB, Mongoose
+HTML, CSS, JavaScript, Bootstrap, jQuery, Chart.js, Handlebars.js, Node.js, Express.js, MongoDB, Mongoose
 
 ### Live Site
 https://harryteo-votingapp.herokuapp.com/
