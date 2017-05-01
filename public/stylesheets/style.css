@@ -1,0 +1,262 @@
+body {
+  padding-top: 80px;
+  font-family: 'Cabin', sans-serif;
+  font-size: 16px;
+}
+a, a:hover, a:focus {
+  color: #00B7FF;
+}
+h1 {
+	margin-bottom: 20px;
+}
+
+/* Navigation */
+#menu {
+	padding: 0;
+	transition: all 0.8s;
+}
+.navbar-default {
+	background-color: #888;
+	border-color: #666;
+}
+.navbar-default .navbar-brand {
+	font-size: 27px;
+	color: #231f20;
+}
+.navbar-default .navbar-nav > li > a {
+	text-transform: uppercase;
+	color: #231f20;
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+@media (min-width: 768px) {
+	#menu {
+		padding: 0 40px;
+	}	
+	.navbar-brand, .navbar-nav li a {
+    line-height: 70px;
+    height: 70px;
+    padding-top: 0;
+	}
+	.navbar-default .navbar-nav > li > a {
+		font-size: 14px;
+	}	
+}
+.navbar-default .navbar-nav > li > a:hover {
+	color: #fff;
+}
+.navbar-default a.navbar-brand:hover {
+	text-decoration: none;
+	color: #231f20;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+	color: #fff !important;
+	background-color: transparent;
+}
+.navbar-default .navbar-toggle{
+  border-color: #231f20;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #231f20;
+}
+.navbar-toggle {
+	border-radius: 0;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background: #666;
+}
+
+/* Modals */
+/*.modal-dialog {
+  margin: 20vh auto 0px auto
+}*/
+/*The following, allows for page-scrolling while modal is open (by default bootstrap modal hides the scrollbar when open)*/
+/*.modal-open {
+  overflow: auto;   
+  padding-right: 0px !important;
+}*/
+.modal { text-align: center; }
+.modal-header {
+  color: #fff;
+  padding: 5px 15px;
+  border-bottom: 1px solid #eee;
+  background-color: #333;
+  /*background-color: #d73d32;*/
+  -webkit-border-top-left-radius: 5px;
+  -webkit-border-top-right-radius: 5px;
+  -moz-border-radius-topleft: 5px;
+  -moz-border-radius-topright: 5px;
+   border-top-left-radius: 5px;
+   border-top-right-radius: 5px;
+}
+.modal-header h1 i, .modal-header h1 span {
+  font-size: 40px;
+}
+.modal-header .close {
+  color:#fff;
+}
+.modal-body p {
+  font-size: 18px;
+  color: #737373;
+}
+.modal-body p.modal-title {
+  font-size: 30px;
+  /*color: #333;*/
+  margin-top: 20px;
+  margin-bottom: 25px;
+}
+.modal-body p.subMessage {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+.modal-footer { text-align: center; }
+
+/* Index Page - pollsSection */
+#pollsSection {
+	margin-top: 30px;
+	margin-bottom: 40px;
+}
+#pollsSection .btn{
+	font-size: 16px;
+	padding: 8px 0;
+}
+
+/* SignIn/SignUp Pages - signin/signup Form */
+.signinTryAgainMsg {
+	margin-top: -12px;
+}
+.separator-with-label {
+	text-align: center;
+	color: #eee;
+	position:relative;
+	margin: 0;
+}
+.separator-with-label label {
+	display: block;
+	position: absolute;
+	font-size: 12px;
+	top: -8px;
+	margin: 0;
+	width: 100%;
+}
+.separator-with-label label span {
+	padding: 0 1em;
+	background-color: #fff;	
+}
+.fa-facebook, .fa-twitter {
+	margin-right: 7px;
+}
+
+/* Profile Page -  myPollsTable */
+#myPollsTable {
+	margin-top: 25px;
+	margin-bottom: 50px;
+}
+#myPollsTable caption {
+	color:#fff;
+	background-color: #333;
+	border-top-right-radius: 15px;
+	border-top-left-radius: 15px;
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+}
+#myPollsTable td, #myPollsTable th {
+	border-color: #333;
+}
+#myPollsTable.table-hover tbody tr:hover td {
+  background-color: #ddd;
+}
+#myPollsTable tbody tr td {
+	line-height: 40px;
+}
+/* Profile Page -  pollSubmit Form */
+#pollSubject {
+	font-size: 18px;
+	padding: 22px 10px;
+	margin-bottom: 20px;
+}
+#pollSubmit .option {
+	transition: all 0.2s ease-in-out;
+}
+#pollSubmit .option.transparent {
+	opacity: 0.2;
+}
+#pollSubmit .option.transparent:hover {
+	opacity: 0.7;
+}
+/* Profile Page -  Modals */
+#deletePollModal .modal-header, #deletePollErrorModal .modal-header {
+  background-color: #d73d32;
+}
+
+/* Individual Poll Page - pollSection */
+#pollSection {
+	padding-top: 35px;
+}
+#pollSection label {
+	display: block;
+}
+#pollSection .panel-title .fa {
+	margin-right:8px;
+}
+#pollSection .panel-footer .fa {
+	margin-right:5px;
+}
+#pollSection .panel-body .list-group {
+	margin-bottom: 0;
+}
+#pollSection .panel-body .radio {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+#chartSection {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#pollChartContainer {
+	position: relative;
+	height: 80vh;
+	/*max-height: 600px;*/
+}
+/* Individual Poll Page - addPollOptionsModal */
+#addPollOptionsModal .modal-body p.modal-title {
+	font-size: 26px;
+	margin-top: 10px;
+	margin-bottom: 12px;
+}
+#addPollOptionsModal .option {
+	transition: all 0.2s ease-in-out;
+}
+#addPollOptionsModal .option.transparent {
+	opacity: 0.2;
+}
+#addPollOptionsModal .option.transparent:hover {
+	opacity: 0.7;
+}
+/* Individual Poll Page - addPollOptionsErrorModal */
+#addPollOptionsErrorModal .modal-header {
+  background-color: #d73d32;
+}
+
+/* Error Page */
+#errorSection .fa {
+	margin-top: 45px;
+	font-size: 65px;
+	color: #d9534f;
+}
+#errorSection h1 {
+	margin-top: 20px;
+	margin-bottom: 10px;
+  font-size: 38px;
+  letter-spacing: 0.05em;
+}
+#errorSection h1 span {
+	font-size: 42px;
+	font-weight: bold;
+}
+#errorSection p {
+	font-size: 24px;
+}

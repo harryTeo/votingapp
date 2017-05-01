@@ -1,0 +1,109 @@
+<div class="container">
+	<div class="row" id="pollSection">
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+	    <form action="/poll/{{poll._id}}" method="post">
+		    <div class="panel panel-primary">
+	        <div class="panel-heading">
+	          <h3 class="panel-title">
+	            <i class="fa fa-hand-o-right" aria-hidden="true"></i> {{poll.subject}}
+	          </h3>
+	        </div>
+	        <div class="panel-body">
+	          <ul class="list-group">
+	          	{{#each poll.options}}
+		            <li class="list-group-item">
+		              <div class="radio">
+		                <label><input type="radio" name="pollOptions" value="{{this.option}}" {{#if_eq this.option ../voterPreviousChoice}}checked{{/if_eq}}>{{this.option}}</label>
+		              </div>
+		            </li>
+	            {{/each}}
+	          </ul>
+	        </div>
+	        <div class="panel-footer clearfix">
+	        	<input type="hidden" name="_csrf" value="{{csrfToken}}">
+	          <button type="submit" class="btn btn-primary pull-left"><i class="fa fa-check" aria-hidden="true"></i> Vote</button>
+	          {{#if isLoggedIn}}
+	          	<button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#addPollOptionsModal"><i class="fa fa-plus" aria-hidden="true"></i> Add Options</button>
+	          {{/if}}
+	        </div>
+		    </div>
+	    </form>
+    </div>	
+  </div>
+  {{#if isLoggedIn}}
+		<div class="row">
+	    <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+				<a href="{{shareOnTwitterHref}}" id="shareOnTwitterButton" class="btn btn-block btn-info">
+					<i class="fa fa-twitter" aria-hidden="true"></i> Share on Twitter
+				</a>
+	    </div>
+	  </div>
+  {{/if}}
+	<div class="row" id="chartSection">
+    <div id="pollChartContainer" class="col-xs-12 col-sm-8 col-sm-offset-2">  
+    	<input type="hidden" id="pollData" name="pollData" value="{{pollString}}">
+    	<canvas id="pollChart" width="400" height="400"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Modals -->
+<div id="addPollOptionsModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h1>Add Poll Options</h1>
+      </div>
+      <div class="modal-body">
+				<div class="row">
+					<div class="col-xs-12 col-sm-10 col-sm-offset-1">	      
+		        <p class="modal-title">{{poll.subject}}</p>
+						<ul class="list-group">
+							{{#each poll.options}}
+								<li class="list-group-item option">
+									<div class="input-group input-group-lg">
+										<span class="input-group-addon">{{math @index "+" 1}}</span>
+										<input type="text" class="form-control uneditable-input" value="{{this.option}}" disabled>
+									</div>
+								</li>
+							{{/each}}										
+							<li class="list-group-item option transparent">
+								<div class="input-group input-group-lg">
+									<span class="input-group-addon">{{math poll.options.length "+" 1}}</span>
+									<input type="text" class="form-control" placeholder="Enter New Option" disabled>
+									<span class="input-group-btn">
+										<button class="btn btn-success addPollOptionButton" type="button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+									</span>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-id="{{poll._id}}" id="saveNewPollOptions">Save</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="addPollOptionsErrorModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h1><span class="glyphicon glyphicon-fire"></span></h1>
+      </div>
+      <div class="modal-body">
+        <p class="modal-title">Ooops!</p>
+        <p class="message">The action could not be completed.</p>
+        <p class="subMessage">Keep trying, never give up <i class="fa fa-smile-o" aria-hidden="true"></i></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
