@@ -13,6 +13,7 @@ Developed for the [freeCodeCamp](https://www.freecodecamp.com/) Back End Develop
 8. As an unauthenticated or authenticated user, I can see the results of polls in chart form.
 
 ## Technology stack
+
 HTML, CSS, JavaScript, Bootstrap, jQuery, Handlebars.js, Node.js, Express.js, MongoDB, Mongoose
 
 ### Live Site
