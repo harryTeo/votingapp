@@ -22,6 +22,7 @@ router.get("/poll/:id", function(req, res, next) { // Individual Poll Page
 	var pollId = req.params.id;
 	Poll.findById(pollId, function(err, poll) {
 		if (err) return res.status(404).render('error', { errorStatus: 404, errorMessage: "Poll Not Found!" });
+		if(!poll) return res.status(404).render('error', { errorStatus: 404, errorMessage: "Poll Not Found!" });
 
 		var voterId = req.isAuthenticated() ? req.user._id : null;
 		var voterIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress;
@@ -60,6 +61,7 @@ router.post("/poll/:id", function(req, res, next) { // Vote in a Poll
 	if (pollOption) { // An Option was Checked
 		Poll.findById(pollId, function(err, poll) {
 			if (err) return res.status(500).render('error', { errorStatus: 500, errorMessage: "Internal Server Error - Please try again later" });
+			if (!poll) return res.status(500).render('error', { errorStatus: 500, errorMessage: "Internal Server Error - Please try again later" });
 
 			var voterId = req.isAuthenticated() ? req.user._id : null;
 			var voterIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress;
@@ -106,6 +108,7 @@ router.delete("/poll/:id", isLoggedIn, function(req, res, next) { // Delete Poll
 	var pollId = req.params.id;
 	Poll.findByIdAndRemove(pollId, function (err, poll) {  
 		if (err) return res.status(500).render('error', { errorStatus: 500, errorMessage: "Internal Server Error - Please try again later" });
+		if (!poll) return res.status(500).render('error', { errorStatus: 500, errorMessage: "Internal Server Error - Please try again later" });
     if (poll.createdBy != req.user._id) return res.status(500).render('error', { errorStatus: "", errorMessage: "Invalid Action!" });
     
     var response = {
@@ -121,6 +124,7 @@ router.put("/poll/:id", isLoggedIn, function(req, res, next) { // Add Poll Optio
 	var newPollOptions = req.body.newOptionsArray;
 	Poll.findById(pollId, function (err, poll) {
 	  if (err) return res.status(500).render('error', { errorStatus: 500, errorMessage: "Internal Server Error - Please try again later" });
+	  if (!poll) return res.status(500).render('error', { errorStatus: 500, errorMessage: "Internal Server Error - Please try again later" });
 	  
 	  for(var i=0; i<newPollOptions.length; i++) {
 	  	poll.options.push({
@@ -140,7 +144,9 @@ router.get("/profile/:id", isLoggedIn, function(req, res, next) { // Profile Pag
 	var userId = req.params.id;
 
 	User.findOne({ _id: userId }, function(err, user) {
+
 		if (err) return res.status(404).render('error', { errorStatus: 404, errorMessage: "User Not Found!" });
+		if (!user) return res.status(404).render('error', { errorStatus: 404, errorMessage: "User Not Found!" });
 
 		Poll.find({ createdBy: userId }, null, {sort: {createdAt: -1}}, function(err, docs){
 			var myPolls = [];
@@ -186,7 +192,7 @@ router.post("/newpoll", isLoggedIn, function(req, res, next) { // Add New Poll
 	});
 	newPoll.save(function(err, result) {
 		if (err) return res.status(500).render('error', { errorStatus: 500, errorMessage: "Internal Server Error - Please try again later" });
-		
+
 		res.redirect("/poll/" + result._id);
 	});
 });
