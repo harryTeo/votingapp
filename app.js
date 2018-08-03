@@ -18,8 +18,8 @@ var index = require('./routes/index');
 
 var app = express();
 
-mongoose.connect(process.env.MONGOLAB_URI);
 mongoose.Promise = global.Promise;
+mongoose.connect(process.env.MONGOLAB_URI, { useNewUrlParser: true });
 
 require("./config/passport"); // Note: this should be placed after "mongoose.connect". We don't assign it to a var since we simply want to load the file and make it accessible to our app
 
